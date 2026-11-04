@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Choose a beginner-friendly project and build an AI-assisted prototype with your team.">
+    <title>Start here — Product Design AI Hackathon</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./guide.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the projects</a>
+    <header class="site-header">
+      <a class="wordmark" href="./">PD <span>× AI</span></a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#projects">Choose a project</a>
+        <a href="#design-system-layer">Add a design system</a>
+        <a href="#how-to-start">How to start</a>
+        <a class="nav-try" href="./playground.html">Try the starter</a>
+      </nav>
+    </header>
+    <main id="main" class="participant-page">
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <h1 id="welcome-title">Pick a project.<br>Make one useful thing work.</h1>
+          <p class="welcome-lede">You’ll work in a team of four or five for about one build day, using AI to help make a small prototype that solves an everyday problem. You do not need to be a coder to take part.</p>
+          <a class="button welcome-button" href="#projects">See the four projects <span aria-hidden="true">↓</span></a>
+        </div>
+        <aside class="welcome-note">
+          <strong>Start simple.</strong>
+          <p>Every project works with sample information already in this pack. Fetching live information from another website, connecting a real AI model, and publishing the app are optional challenges.</p>
+        </aside>
+      </section>
+
+      <section class="project-chooser" id="projects" aria-labelledby="projects-title">
+        <div class="section-lead">
+          <h2 id="projects-title">Choose one project</h2>
+          <p>Read the short descriptions. Pick the problem your team finds most interesting. You can change the idea once you understand it better.</p>
+        </div>
+        <nav class="project-index" aria-label="Project briefs">
+          <a href="#project-outing"><span>Plan an easier day out</span><small>Help someone find a good local outing</small><span class="index-arrow" aria-hidden="true">↓</span></a>
+          <a href="#project-reading"><span>Find your next read</span><small>Help someone choose a book to explore</small><span class="index-arrow" aria-hidden="true">↓</span></a>
+          <a href="#project-numbers"><span>Make numbers make sense</span><small>Help someone understand a public statistic</small><span class="index-arrow" aria-hidden="true">↓</span></a>
+          <a href="#project-system"><span>Make public information easier to use</span><small>Build a small design system for a real task</small><span class="index-arrow" aria-hidden="true">↓</span></a>
+        </nav>
+        <p class="chooser-help">Still unsure? Pick <strong>Plan an easier day out</strong>. It uses the example information in the starter and is the easiest place to begin.</p>
+      </section>
+
+      <section class="project-briefs" aria-label="Detailed project instructions">
+        <article class="project-brief" id="project-outing" aria-labelledby="outing-title">
+          <div class="brief-heading"><p class="brief-label">Local places</p><h2 id="outing-title">Plan an easier day out</h2><p class="brief-summary">Help someone choose a place to visit without having to check lots of different things.</p></div>
+          <div class="brief-body">
+            <div class="brief-facts">
+              <div><h3>Who are you helping?</h3><p>Imagine a person with a free afternoon who wants somewhere enjoyable, affordable, and easy to get around.</p></div>
+              <div><h3>What will you make?</h3><p>A simple page that lets them compare a few places by cost, indoor or outdoor setting, and access notes.</p></div>
+              <div><h3>What information can you use?</h3><p>The place list in <code>src/data.js</code> is already in the demo. The names and details are examples, so do not present them as verified local advice.</p></div>
+            </div>
+            <div class="brief-steps"><h3>Do these steps</h3><ol><li>Choose one person to design for. Write down what would make a day out easier for them.</li><li>Show the example places in a list of clear, readable cards.</li><li>Add one helpful control, such as “free places” or “indoors”.</li><li>Ask a teammate to try it. Watch where they get stuck and improve that part.</li></ol></div>
+            <div class="brief-finish"><h3>You are finished when…</h3><p>A person can find one suitable place, understand why it may suit them, and use the main controls by keyboard.</p></div>
+            <details class="stretch"><summary>Want a harder version?</summary><p>Add live weather for a chosen location using the <a href="https://open-meteo.com/en/docs">Open-Meteo weather service</a>. Keep the example list as a fallback and show when the weather was checked. The basic request does not need a key; check the current terms before use.</p></details>
+            <details class="prompt-details"><summary>Give Codex this first prompt</summary><div class="prompt-box"><pre><code>You are helping my hackathon team make a simple day-out planner. First inspect the project and explain which files control the page and the sample places. Do not change files yet. Then suggest the smallest first change: show the places as clear cards with their cost and access notes. We are beginners, so use plain HTML, CSS, and JavaScript, keep the page keyboard-accessible, and do not connect to another website yet.</code></pre><button class="copy-button" type="button" data-copy="prompt-outing">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span></div></details>
+          </div>
+        </article>
+
+        <article class="project-brief" id="project-reading" aria-labelledby="reading-title">
+          <div class="brief-heading"><p class="brief-label">Books and interests</p><h2 id="reading-title">Find your next read</h2><p class="brief-summary">Help someone who is curious about a topic choose one book to start with.</p></div>
+          <div class="brief-body">
+            <div class="brief-facts">
+              <div><h3>Who are you helping?</h3><p>Imagine someone who wants to learn about a new hobby but feels overwhelmed by too many search results.</p></div>
+              <div><h3>What will you make?</h3><p>A small book finder with a topic search, a few useful details, and a way to save a shortlist.</p></div>
+              <div><h3>What information can you use?</h3><p>Begin with <a href="./data/books.json">the sample book list</a>. These are practice entries for the prototype.</p></div>
+            </div>
+            <div class="brief-steps"><h3>Do these steps</h3><ol><li>Pick a reader and a topic they might type, such as gardening or drawing.</li><li>Show a handful of matching book results with title, author, and a short reason to look closer.</li><li>Let the reader save or remove a book from a “Maybe later” list.</li><li>Ask a teammate to find one book. Improve the labels or search flow if they hesitate.</li></ol></div>
+            <div class="brief-finish"><h3>You are finished when…</h3><p>A person can search or browse the sample books, understand the results, and keep a shortlist while they use the page.</p></div>
+            <details class="stretch"><summary>Want a harder version?</summary><p>Replace the sample results with a user-triggered search using <a href="https://openlibrary.org/developers/api">Open Library Search</a>. Keep requests modest and cache results. Show that the information comes from Open Library.</p></details>
+            <details class="prompt-details"><summary>Give Codex this first prompt</summary><div class="prompt-box"><pre><code>Help my team make a beginner-friendly book finder. First inspect the project and the sample book file, then explain how the data is organised. Do not edit yet. Our first version should let someone browse a few books and save a shortlist. Keep it in plain HTML, CSS, and JavaScript, explain each change simply, and do not connect a live API yet.</code></pre><button class="copy-button" type="button" data-copy="prompt-reading">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span></div></details>
+          </div>
+        </article>
+
+        <article class="project-brief" id="project-numbers" aria-labelledby="numbers-title">
+          <div class="brief-heading"><p class="brief-label">Public data</p><h2 id="numbers-title">Make numbers make sense</h2><p class="brief-summary">Help someone understand how one public number changes over time.</p></div>
+          <div class="brief-body">
+            <div class="brief-facts">
+              <div><h3>Who are you helping?</h3><p>Imagine someone who has seen a statistic in the news and wants to understand what it actually says.</p></div>
+              <div><h3>What will you make?</h3><p>A small explainer that lets them choose a place, compare years, and see a plain-language summary of the pattern.</p></div>
+              <div><h3>What information can you use?</h3><p>Start with <a href="./data/population-sample.csv">the practice dataset</a>. Its numbers are invented for this exercise. The live-data stretch links to the official source.</p></div>
+            </div>
+            <div class="brief-steps"><h3>Do these steps</h3><ol><li>Read the dataset headings. Work out what each number and year means.</li><li>Let a person choose a place and show its values over time.</li><li>Add one comparison or a short explanation. Keep the original numbers visible.</li><li>Ask a teammate what they think the pattern means. Add a note if the data could be misunderstood.</li></ol></div>
+            <div class="brief-finish"><h3>You are finished when…</h3><p>A person can choose a place, see how its number changes, and tell the difference between the data and your explanation.</p></div>
+            <details class="stretch"><summary>Want a harder version?</summary><p>Fetch population data from the <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392">World Bank public data service</a>. It does not require a key. Show the indicator name, source, and year so people can check what the numbers represent.</p></details>
+            <details class="stretch"><summary>Want to add an AI helper?</summary><p>Prototype a chat box that answers questions about the numbers currently on screen. The supplied demo is a mock, not a live AI. Never put a real model key in this public website.</p></details>
+            <details class="prompt-details"><summary>Give Codex this first prompt</summary><div class="prompt-box"><pre><code>Help my team build a simple public-data explainer. First inspect the project and the file data/population-sample.csv. Explain what a row and column mean in plain language; do not edit yet. Then suggest a first screen where a person chooses a place and compares its values by year. Keep the source and the fact that these are practice numbers visible. Use plain HTML, CSS, and JavaScript, and do not connect to a live website yet.</code></pre><button class="copy-button" type="button" data-copy="prompt-numbers">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span></div></details>
+          </div>
+        </article>
+
+        <article class="project-brief" id="project-system" aria-labelledby="system-title">
+          <div class="brief-heading"><p class="brief-label">Reusable design</p><h2 id="system-title">Make public information easier to use</h2><p class="brief-summary">Create a small set of reusable design parts, then use them to help someone compare local places.</p></div>
+          <div class="brief-body">
+            <div class="brief-facts">
+              <div><h3>Who are you helping?</h3><p>Imagine someone scanning several local options on a phone and trying to spot what matters to them.</p></div>
+              <div><h3>What will you make?</h3><p>A simple place list and a tiny design system: shared colours, text styles, spacing, and reusable place cards or labels.</p></div>
+              <div><h3>What information can you use?</h3><p>Use the example places already in <code>src/data.js</code>. You can sketch the visual rules in Figma or go straight to code.</p></div>
+            </div>
+            <div class="brief-steps"><h3>Do these steps</h3><ol><li>Choose the three facts someone needs to compare places.</li><li>Set a few reusable rules for colour, text size, spacing, and keyboard focus.</li><li>Build one place card and one useful label, then reuse them across the list.</li><li>Check that the cards are easy to read on a phone and do not rely on colour alone.</li></ol></div>
+            <div class="brief-finish"><h3>You are finished when…</h3><p>The same information is easy to compare in each card, and your team can point to the shared design rules that keep the page consistent.</p></div>
+            <details class="stretch"><summary>Want a harder version?</summary><p>Create the colour and text styles as Figma variables, then use Figma MCP to bring the design context into Codex. MCP is an optional connection between an AI tool and another service; ask a facilitator for setup help.</p></details>
+            <details class="prompt-details"><summary>Give Codex this first prompt</summary><div class="prompt-box"><pre><code>Help my team turn the example places into a clear, reusable interface. First inspect the project and explain where its colours and spacing are defined. Do not edit yet. We want to define a small set of design tokens, make one reusable place card, and use it for every place. Keep the page readable, keyboard-accessible, and easy to use on a phone. Explain changes in beginner-friendly language.</code></pre><button class="copy-button" type="button" data-copy="prompt-system">Copy prompt</button><span class="copy-status" role="status" aria-live="polite"></span></div></details>
+          </div>
+        </article>
+      </section>
+
+      <section class="design-layer" id="design-system-layer" aria-labelledby="design-layer-title">
+        <div class="design-layer-intro">
+          <p class="brief-label">Optional add-on for any project</p>
+          <h2 id="design-layer-title">Add a small design system</h2>
+          <p>Once one screen works, make its colours, type, spacing, and repeated parts consistent. You do not need to build a complete system. Spend about an hour on a few rules and use them in one part of your project.</p>
+        </div>
+        <div class="design-layer-choices">
+          <article>
+            <h3>Route 1: Make your own</h3>
+            <p>Best for learning how a design system works. In Figma, make one page with a few colour and text styles, spacing steps, and examples of a button, a card, and a label. In the website, create matching CSS variables and reusable styles in <code>styles.css</code>.</p>
+            <ol>
+              <li>Choose a small set of colours, type sizes, spacing, and corner shapes.</li>
+              <li>Build one button, one information card, and one label.</li>
+              <li>Use them on your screen, then adjust them together in Figma and code.</li>
+            </ol>
+            <details class="prompt-details">
+              <summary>Copy a prompt to start your own</summary>
+              <div class="prompt-box"><pre><code>Help us create a tiny design system for this project, not a full company-wide system. First inspect the existing HTML and CSS and explain what is already there. Then suggest a small set of accessible colour, type, spacing, and focus tokens, plus three reusable parts we need for this screen. Keep it in plain HTML and CSS. Show us the proposed rules before changing files, and explain how we can mirror the same names in Figma variables.</code></pre></div>
+            </details>
+          </article>
+          <article>
+            <h3>Route 2: Start from an existing system</h3>
+            <p>Best for getting consistent components quickly. Pick one starting point; do not combine several libraries during the hackathon.</p>
+            <ul>
+              <li><a href="https://open-props.style/">Open Props</a> gives you ready-made CSS variables for things like colour, type, and spacing. It is a useful token foundation; you still design your own page and components.</li>
+              <li><a href="https://webawesome.com/docs/">Web Awesome</a> gives you ready-made web components that can be used from ordinary HTML. Its official guide supports a CDN start, which avoids a build setup; the team needs internet access.</li>
+            </ul>
+            <p>For this one-day event, try Open Props if you want to learn about tokens, or Web Awesome if you want to assemble a screen from existing components. Keep the starter’s own small CSS if neither helps your project.</p>
+            <details class="prompt-details">
+              <summary>Copy a prompt to use an existing system</summary>
+              <div class="prompt-box"><pre><code>Help us improve this screen using [Open Props / Web Awesome]. First check the official documentation and inspect our current HTML and CSS. Explain what the library gives us and what we still need to design. Propose the smallest change that reuses it without changing our plain HTML, CSS, and JavaScript setup. Keep the data and interactions working, and check keyboard focus and mobile layout.</code></pre></div>
+            </details>
+          </article>
+        </div>
+        <aside class="figma-bridge">
+          <h3>Want to connect Figma and Codex?</h3>
+          <p>Make a simple Figma page with named variables and components, then ask Codex to use that file as design context. Figma’s official MCP connection can share selected frames, components, and variables with Codex. Ask a facilitator to help connect it, and try it before the event; access and usage limits depend on Figma plan and seat. MCP provides context, but your team still decides what good and accessible code looks like.</p>
+          <p><a href="https://developers.figma.com/docs/figma-mcp-server/">Figma MCP setup and capabilities</a> · <a href="https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/">What MCP does (and what Codex does)</a></p>
+          <p class="design-layer-note"><strong>Keep the goal small:</strong> finish with a handful of shared rules and three useful components. Connecting Code Connect or building a full library can be a future project.</p>
+        </aside>
+      </section>
+
+      <section class="start-steps" id="how-to-start" aria-labelledby="start-title">
+        <h2 id="start-title">What your team does next</h2>
+        <ol><li><strong>Choose one project.</strong> You do not have to build all four.</li><li><strong>Talk before you code.</strong> Agree who the project helps and what they need to do.</li><li><strong>Ask Codex to explain the starter.</strong> Open the project folder, paste the prompt from your project, and ask it to explain anything unclear.</li><li><strong>Build one small part.</strong> Check it in a browser. Keep what works and fix what does not.</li><li><strong>Show your learning.</strong> At the end, share the prototype, what the AI helped with, and one thing your team had to check or decide.</li></ol>
+        <div class="team-start"><strong>In a team of four or five</strong><p>Share the work: one person keeps the user problem clear, one sketches the flow, one looks after the data, one works with Codex, and one checks keyboard use and prepares the demo. Pair up and help each other; these are not separate jobs.</p></div>
+        <p class="start-note">You have about one day to build. A small working idea is a good result. You do not need to connect an API or publish a website to finish.</p>
+      </section>
+
+      <section class="safety-note" aria-labelledby="safety-title">
+        <h2 id="safety-title">One important rule about keys and secrets</h2>
+        <p>Anything placed in a website can be seen by visitors. Keys are private access codes. Use fake ones for the learning exercise; never put a real data or AI key in this project or publish it to GitHub Pages.</p>
+      </section>
+
+      <section class="try-section" id="demo" aria-labelledby="demo-title">
+        <div><h2 id="demo-title">Want to see a tiny example first?</h2><p>The demo page has sample places and a pretend assistant. It helps you explore the starter, but it is not a project brief.</p></div>
+        <a class="button" href="./playground.html">Try the starter <span aria-hidden="true">→</span></a>
+      </section>
+      <section class="github-guide" id="get-started" aria-labelledby="github-guide-title">
+        <p class="brief-label">Before you build together</p>
+        <h2 id="github-guide-title">Get your own copy and work as a team</h2>
+        <p class="github-intro">GitHub stores the project online. GitHub Desktop gives you buttons for downloading it, saving changes, and sharing work. You do not need to use Git commands in Terminal for this guide.</p>
+        <p class="repo-placeholder"><strong>Starter repository:</strong> <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY">https://github.com/YOUR-USERNAME/YOUR-REPOSITORY</a> <span>(the organiser will replace this placeholder)</span></p>
+
+        <div class="github-steps">
+          <article><span class="github-step-number">1</span><div><h3>Get ready</h3><p>Create a <a href="https://github.com/signup">GitHub account</a> if you do not have one. Install <a href="https://desktop.github.com/">GitHub Desktop</a> and sign in. If you are new to GitHub, you can first try its built-in <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">practice tutorial</a>.</p></div></article>
+          <article><span class="github-step-number">2</span><div><h3>Make one shared copy for your team</h3><p>Open the starter repository link above. One teammate clicks <strong>Fork</strong> on GitHub to make the team’s own copy, then invites the other teammates as collaborators in the repository settings. If the organiser has already created a team repository and invited you, use that instead. Ask a facilitator if you are unsure which route to take.</p></div></article>
+          <article><span class="github-step-number">3</span><div><h3>Download it with GitHub Desktop</h3><p>In GitHub Desktop, choose <strong>File → Clone Repository</strong>, select the team repository, choose where it should live on your computer, and click <strong>Clone</strong>. This downloaded folder is your working copy. Open that folder in Codex, then follow the starter’s local setup instructions to view the page.</p></div></article>
+          <article><span class="github-step-number">4</span><div><h3>Start a branch before making changes</h3><p>A branch is your team’s safe workspace for one set of changes. In GitHub Desktop, choose <strong>Current Branch → New Branch</strong>, give it a short name such as <code>book-search</code> or <code>place-cards</code>, and create it. Each person should use a separate branch; try not to edit the same file at the same time.</p></div></article>
+          <article><span class="github-step-number">5</span><div><h3>Fetch, save, and share your work</h3><p>Before starting, click <strong>Fetch origin</strong> to check for teammates’ latest updates. When you have made a small change, review the changed files in GitHub Desktop, write a short summary, and click <strong>Commit to…</strong> to save it. Then click <strong>Push origin</strong> (or <strong>Publish branch</strong>) to share your branch online. Fetch checks what is online; pushing sends your saved work up.</p></div></article>
+          <article><span class="github-step-number">6</span><div><h3>Open a pull request</h3><p>A pull request (PR) is a proposal to add your branch’s changes to the team’s main version. In GitHub Desktop, choose <strong>Preview Pull Request</strong> or <strong>Create Pull Request</strong>. Check that the base is your team’s <code>main</code> branch and the compare branch is yours. Add a sentence about what changed, then create it on GitHub. Ask a teammate to review it, then merge it when everyone is happy. After that, switch back to <code>main</code> in GitHub Desktop and click <strong>Fetch origin</strong> and <strong>Pull origin</strong> to get the merged changes.</p></div></article>
+        </div>
+        <p class="github-help"><strong>If something looks wrong:</strong> pause before clicking buttons such as “Discard changes.” GitHub Desktop shows what changed; a facilitator can help sort out conflicts or a branch that is behind.</p>
+
+        <div class="pages-guide">
+          <div><p class="brief-label">Optional: share your prototype</p><h3>Publish it with GitHub Pages</h3><p>GitHub Pages can put a plain HTML, CSS, and JavaScript project on a public web address. First push the finished files to your team repository. On GitHub, open <strong>Settings → Pages</strong>. Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>, select <code>main</code> and <code>/(root)</code>, then save. When it has finished publishing, GitHub shows the site link in the same Pages settings area. It can take a few minutes to appear.</p><p>Anything published there can be viewed by other people. Use sample data and never publish passwords, API keys, or private information.</p></div>
+          <a class="button" href="https://docs.github.com/en/pages/quickstart">GitHub Pages guide <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="github-official-links">Official help: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">clone or fork a repository</a> · <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop">push changes</a> · <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">choose a Pages publishing source</a>.</p>
+      </section>
+
+    </main>
+    <footer class="site-footer"><span>Start small. Learn together. Share what changed.</span><a href="./README.md">Setup notes</a></footer>
+    <script type="module" src="./src/guide.js"></script>
+  </body>
+</html>
