@@ -17,7 +17,7 @@ This is plain HTML, CSS, and JavaScript. It needs no package install or API key.
 - `src/data.js` — example places and local mock helper
 - `src/playground.js` — demo filters and helper interaction
 - `src/guide.js` — copy buttons for Codex prompts
-- `data/books.json` and `data/population-sample.csv` — invented practice data for two project routes
+- `data/population-sample.csv` — invented practice data for the public-numbers project; the career-growth project uses skills and learning information entered by participants
 - `docs/` — API options, team workflow, and facilitator run of show
 
-The project data files are clearly labelled as invented examples. The live API connections are optional learning stretches; see [`docs/api-options.md`](docs/api-options.md) before using them.
+Prepared sample data is labelled as invented; the career-growth project starts with information entered by participants. The live API connections are optional learning stretches; see [`docs/api-options.md`](docs/api-options.md) before using them.
