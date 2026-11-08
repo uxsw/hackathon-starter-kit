@@ -12,7 +12,9 @@ This is plain HTML, CSS, and JavaScript. It needs no package install or API key.
 
 ## Project files
 
-- `index.html` and `guide.css` — participant guide and project briefs
+- `tokens.css` — design tokens (colour, type, spacing, shape), loosely based on the CGI design system
+- `base.css` — shared styles for both pages: header, buttons, chips, form fields, status messages, footer
+- `index.html` and `home.css` — participant guide and project briefs
 - `playground.html` and `playground.css` — interactive example app
 - `src/data.js` — example places and local mock helper
 - `src/playground.js` — demo filters and helper interaction

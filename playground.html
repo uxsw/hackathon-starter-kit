@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A tiny example app to explore before starting your hackathon project.">
     <title>Try the starter — Product Design AI Hackathon</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./guide.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
+    <link rel="stylesheet" href="./tokens.css">
+    <link rel="stylesheet" href="./base.css">
     <link rel="stylesheet" href="./playground.css">
     <script type="module" src="./src/playground.js"></script>
   </head>
@@ -17,16 +20,16 @@
       <nav class="header-nav" aria-label="Main navigation"><a href="./#projects">Choose a project</a><a href="./">Start here</a></nav>
     </header>
     <main class="playground-page" id="main">
-      <div class="demo-label">A small working example</div>
+      <div class="chip demo-label">A small working example</div>
       <h1>Try the day-out planner</h1>
       <p class="playground-intro">This page is here to help you see a simple web app in action. It is not a project you have to copy. Your team’s four project choices are on the <a href="./#projects">Start here page</a>.</p>
-      <div class="demo-note"><strong>What is real here?</strong> The filters and question box work. The places are invented examples, and the answer helper uses simple rules. No live API or AI service is connected.</div>
+      <div class="status-message demo-note"><strong>What is real here?</strong> The filters and question box work. The places are invented examples, and the answer helper uses simple rules. No live API or AI service is connected.</div>
 
       <section class="playground-panel" aria-labelledby="places-title">
         <div class="playground-heading"><div><h2 id="places-title">Example places</h2><p>Try a filter to narrow the list.</p></div></div>
         <div class="playground-filters">
-          <div><label for="setting-filter">Show places that are</label><select id="setting-filter"><option value="all">Any setting</option><option value="Indoor">Indoors</option><option value="Outdoor">Outdoors</option></select></div>
-          <div><label for="cost-filter">Cost</label><select id="cost-filter"><option value="all">Any cost</option><option value="Free">Free</option></select></div>
+          <div class="field"><label for="setting-filter">Show places that are</label><select class="input" id="setting-filter"><option value="all">Any setting</option><option value="Indoor">Indoors</option><option value="Outdoor">Outdoors</option></select></div>
+          <div class="field"><label for="cost-filter">Cost</label><select class="input" id="cost-filter"><option value="all">Any cost</option><option value="Free">Free</option></select></div>
         </div>
         <p class="playground-status" id="place-count" role="status" aria-live="polite"></p>
         <ul id="place-list" class="place-list" aria-label="Example places"></ul>
@@ -35,8 +38,8 @@
       <section class="playground-panel helper-panel" aria-labelledby="helper-title">
         <h2 id="helper-title">Ask the pretend helper</h2>
         <p>This example can answer simple questions about cost and access. It does not understand language like a real AI assistant.</p>
-        <form id="helper-form"><label for="helper-question">Try asking about free or step-free places</label><div class="helper-input"><input id="helper-question" name="question" required placeholder="Which places are free?"><button class="button" type="submit">Ask</button></div></form>
-        <p id="helper-answer" class="helper-answer" role="status" aria-live="polite"></p>
+        <form id="helper-form"><div class="field"><label for="helper-question">Try asking about free or step-free places</label><div class="helper-input"><input class="input" id="helper-question" name="question" required placeholder="Which places are free?"><button class="button button-primary" type="submit">Ask</button></div></div></form>
+        <p id="helper-answer" class="status-message helper-answer" role="status" aria-live="polite"></p>
       </section>
 
       <a class="back-link" href="./">← Back to the projects and instructions</a>
