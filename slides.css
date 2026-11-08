@@ -1,0 +1,361 @@
+/*
+ * Kick-off slides (slides.html). Loads after tokens.css and base.css.
+ * Concept: the deck is a live Codex session run by a team of product designers.
+ * Each slide is one turn: the team's prompt, a moment of thinking, a streamed answer.
+ * Everything is visible by default; JavaScript only adds the streaming.
+ */
+:root {
+  /* Projector type scale. Scales with the smaller screen side so wide screens don't overflow. Assumed */
+  --deck-display: clamp(2.75rem, 0.75rem + 8vmin, 6rem);
+  --deck-heading: clamp(2.25rem, 0.5rem + 6vmin, 5rem);
+  --deck-lede: clamp(1.25rem, 0.5rem + 2.4vmin, 2.25rem);
+  --deck-body: clamp(1.0625rem, 0.5rem + 1.6vmin, 1.625rem);
+  --deck-small: clamp(0.9375rem, 0.5rem + 1.1vmin, 1.25rem);
+  --deck-pad: clamp(var(--space-5), 6vmin, calc(var(--space-6) * 3));
+  --deck-composer: calc(var(--target-size) + var(--space-4) * 2);
+
+  /* The session runs on the brand purple at full strength: a dim room and a projector. Assumed */
+  --deck-bg: var(--cgi-purple-900);
+  --deck-panel: var(--cgi-purple-700);
+  --deck-text: var(--cgi-white);
+  --deck-muted: var(--cgi-purple-200);
+  --deck-faint: var(--cgi-purple-300);
+  --deck-rule: var(--cgi-purple-700);
+  --deck-rule-strong: var(--cgi-purple-300);
+
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ---------- Browser surfaces ---------- */
+html, body { height: 100%; }
+body {
+  background: var(--deck-bg);
+  color: var(--deck-text);
+  caret-color: var(--deck-text);
+  scrollbar-color: var(--deck-panel) transparent;
+  overflow-x: hidden;
+}
+::selection { background: var(--cgi-purple-200); color: var(--cgi-purple-900); }
+.slide a { color: var(--deck-text); text-decoration-color: var(--deck-faint); text-decoration-thickness: 1px; }
+.slide a:hover { text-decoration-color: var(--deck-text); }
+:focus-visible { outline-color: var(--deck-text); }
+.icon { width: 1.25em; height: 1.25em; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- The brand band: also the "thinking" indicator ---------- */
+.deck-band {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: var(--space-1);
+  background: linear-gradient(90deg, var(--cgi-red), var(--cgi-magenta-300) 30%, var(--cgi-purple) 50%, var(--cgi-magenta-300) 70%, var(--cgi-red));
+  background-size: 200% 100%;
+  background-position: 0 0;
+}
+.is-thinking .deck-band { animation: band-think 1.4s linear infinite; }
+@keyframes band-think { to { background-position: -200% 0; } }
+
+/* ---------- Slides ---------- */
+.slide {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-5);
+  min-height: 100svh;
+  padding: calc(var(--deck-pad) + var(--space-1)) var(--deck-pad) calc(var(--deck-composer) + var(--deck-pad));
+  font-size: var(--deck-body);
+  overflow: hidden;
+}
+.slide-inner { width: 100%; max-width: var(--width-full); margin: 0 auto; }
+.answer { align-self: center; }
+.slide h1, .slide h2 { margin: 0; font-weight: var(--font-weight-semibold); letter-spacing: -0.02em; text-wrap: balance; color: var(--deck-text); }
+.slide h1 { max-width: 13ch; font-size: var(--deck-display); line-height: 0.98; }
+.slide h2 { max-width: 20ch; font-size: var(--deck-heading); line-height: 1.02; }
+/* Quieter half of a headline: the context, not the claim */
+.slide .hush { color: var(--deck-faint); }
+.slide p { max-width: 52ch; margin: 0; }
+.lede { margin-top: var(--space-5) !important; font-size: var(--deck-lede); line-height: 1.3; color: var(--deck-muted); text-wrap: pretty; }
+.small { font-size: var(--deck-small); color: var(--deck-muted); }
+
+/* ---------- The team's prompt (a turn in the conversation, right-aligned) ---------- */
+.turn {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: min(36rem, 100%);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+  border-radius: var(--radius-lg);
+  background: var(--deck-panel);
+  color: var(--deck-text);
+  font-size: var(--deck-small);
+  line-height: var(--line-height-heading);
+}
+.team { display: flex; flex: 0 0 auto; }
+.team span {
+  width: var(--space-5);
+  height: var(--space-5);
+  border: 2px solid var(--deck-panel);
+  border-radius: var(--radius-pill);
+}
+.team span + span { margin-left: calc(-1 * var(--space-2)); }
+.team span:nth-child(1) { background: var(--cgi-white); }
+.team span:nth-child(2) { background: var(--cgi-purple-200); }
+.team span:nth-child(3) { background: var(--cgi-purple-300); }
+.team span:nth-child(4) { background: var(--cgi-purple); }
+
+/* ---------- 1. Welcome ---------- */
+.welcome { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: var(--deck-pad); align-items: center; }
+.qr-card {
+  justify-self: end;
+  width: min(100%, 24rem);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.qr { display: block; width: 100%; height: auto; color: var(--cgi-purple-900); }
+.qr-bg { fill: var(--color-surface); }
+.qr-card p { max-width: none; margin-top: var(--space-4); font-size: var(--deck-small); color: var(--color-text-secondary); }
+.qr-card a { display: inline-block; margin-top: var(--space-1); color: var(--color-link); font-weight: var(--font-weight-semibold); text-decoration-color: currentColor; overflow-wrap: anywhere; }
+
+/* ---------- Shared: points separated by rules ---------- */
+.points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--space-5) var(--deck-pad);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.points li { position: relative; margin: 0; padding-top: var(--space-4); border-top: var(--border-width) solid var(--deck-rule-strong); color: var(--deck-muted); }
+.points strong { display: block; margin-bottom: var(--space-2); font-size: var(--deck-lede); font-weight: var(--font-weight-semibold); line-height: var(--line-height-heading); color: var(--deck-text); }
+
+/* ---------- 2. Multiplayer cursors (decorative, collaboration) ---------- */
+.cursors { position: absolute; inset: 0; pointer-events: none; }
+.cursor { position: absolute; top: 0; left: 0; display: flex; align-items: flex-start; opacity: 0; }
+.cursor svg { width: var(--space-5); height: var(--space-5); fill: currentColor; stroke: var(--deck-bg); stroke-width: 1.5; stroke-linejoin: round; }
+.cursor span {
+  margin: var(--space-4) 0 0 calc(-1 * var(--space-1));
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+.cursor span b { color: var(--cgi-purple-900); font-weight: inherit; }
+.cursor:nth-child(1) { color: var(--cgi-white); }
+.cursor:nth-child(2) { color: var(--cgi-purple-200); }
+.cursor:nth-child(3) { color: var(--cgi-purple-100); }
+.cursor:nth-child(4) { color: var(--cgi-purple-300); }
+
+/* ---------- 3. Two days ---------- */
+.timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--space-2) - 1px) 0 auto;
+  height: 2px;
+  background: var(--deck-rule-strong);
+  transform-origin: left center;
+}
+.timeline li { position: relative; margin: 0; padding: var(--space-6) var(--space-5) 0 0; color: var(--deck-muted); }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--space-4);
+  height: var(--space-4);
+  border: 2px solid var(--deck-rule-strong);
+  border-radius: var(--radius-pill);
+  background: var(--deck-bg);
+}
+.timeline li.is-finale::before { border-color: var(--deck-text); background: var(--deck-text); }
+.timeline .when { display: block; margin-bottom: var(--space-2); font-size: var(--deck-small); color: var(--deck-faint); }
+.timeline strong { display: block; margin-bottom: var(--space-2); font-size: var(--deck-lede); line-height: var(--line-height-heading); color: var(--deck-text); }
+.timeline p { max-width: 24ch; }
+
+/* ---------- 4. Codex: tips and a live effort demo ---------- */
+.codex { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--deck-pad); align-items: center; }
+.codex h2 { max-width: 14ch; }
+.tips { display: grid; gap: var(--space-4); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
+.tips li { margin: 0; color: var(--deck-muted); }
+.tips strong { color: var(--deck-text); font-weight: var(--font-weight-semibold); }
+.reading { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: var(--space-5) 0 0; padding: var(--space-4) 0 0; border-top: var(--border-width) solid var(--deck-rule); list-style: none; font-size: var(--deck-small); }
+.reading li { margin: 0; }
+.reading .label { color: var(--deck-faint); }
+
+.demo {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--deck-small);
+}
+.slide .demo-prompt, .slide .demo-note, .slide .demo-output { max-width: none; }
+.demo-prompt { display: flex; gap: var(--space-3); align-items: center; padding-bottom: var(--space-4); border-bottom: var(--border-width) solid var(--color-divider-strong); color: var(--color-text); }
+.demo-prompt .team span { border-color: var(--color-surface); }
+.demo-prompt .team span:nth-child(1) { background: var(--cgi-purple-100); }
+.effort { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: var(--space-4) 0; border: 0; padding: 0; }
+.effort legend { float: left; margin-right: var(--space-2); font-weight: var(--font-weight-semibold); color: var(--color-heading-accent); }
+.segmented { display: inline-flex; padding: var(--space-1); border-radius: var(--radius-pill); background: var(--button-secondary-bg); }
+.segmented label { position: relative; }
+.segmented input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.segmented span {
+  display: inline-flex;
+  align-items: center;
+  min-height: calc(var(--target-size) - var(--space-2));
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  color: var(--button-secondary-text);
+  font-weight: var(--font-weight-semibold);
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.segmented label:hover span { color: var(--button-secondary-hover-text); }
+.segmented input:checked + span { background: var(--button-primary-bg); color: var(--button-primary-text); }
+.segmented input:focus-visible + span { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.demo-output { min-height: 7.5em; color: var(--color-text); }
+.demo-output .thinking { color: var(--color-text-secondary); }
+.meters { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-2) var(--space-3); align-items: center; margin-top: var(--space-4); padding-top: var(--space-4); border-top: var(--border-width) solid var(--color-divider-strong); color: var(--color-text-secondary); }
+.meter { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-1); }
+.meter i { height: var(--space-2); border-radius: var(--radius-pill); background: var(--color-divider-strong); transition: background-color 240ms var(--ease-out); }
+.meter i.on { background: var(--color-link); }
+.meter-value { min-width: 6ch; text-align: right; color: var(--color-text); font-weight: var(--font-weight-semibold); }
+.demo-note { margin-top: var(--space-3) !important; color: var(--color-text-secondary); }
+
+/* ---------- 5. Options ---------- */
+.options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
+.options li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+}
+.options strong { text-wrap: balance; font-size: var(--deck-lede); line-height: var(--line-height-heading); color: var(--color-heading-accent); }
+.options .chip { font-size: var(--text-small); }
+.options + .small { margin-top: var(--space-5); }
+.after-points { margin-top: var(--space-6) !important; }
+
+/* ---------- 6. The one to aim for ---------- */
+.aim { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--deck-pad); align-items: end; }
+.aim h2 { max-width: 12ch; font-size: var(--deck-display); line-height: 0.98; }
+.aim .points { grid-template-columns: 1fr; gap: var(--space-4); margin: 0; }
+.aim .points strong { font-size: var(--deck-body); }
+
+/* ---------- The light turn: the recommended answer flips to the white surface ---------- */
+.slide-light { background: var(--color-surface); color: var(--color-text); }
+.slide-light h2 { color: var(--color-heading-accent); }
+.slide-light .lede { color: var(--color-text-secondary); }
+.slide-light .points li { border-top-color: var(--color-divider-strong); color: var(--color-text-secondary); }
+.slide-light .points strong { color: var(--color-heading-accent); }
+.slide-light .turn { background: var(--color-accent-surface); color: var(--color-heading-accent); }
+.slide-light .team span { border-color: var(--color-accent-surface); }
+.slide-light .team span:nth-child(1) { background: var(--cgi-purple-100); }
+.slide-light :focus-visible { outline-color: var(--color-focus); }
+.on-light { caret-color: var(--color-text); }
+
+/* ---------- Composer: the deck's controls ---------- */
+.composer {
+  position: fixed;
+  inset: auto var(--deck-pad) var(--deck-pad);
+  z-index: 2;
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: var(--width-full);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  border: var(--border-width) solid var(--deck-rule-strong);
+  border-radius: var(--radius-lg);
+  background: var(--deck-bg);
+  color: var(--deck-text);
+}
+.js .composer { display: flex; }
+.composer-field { flex: 1; min-width: 0; overflow: hidden; font-size: var(--deck-small); white-space: nowrap; text-overflow: ellipsis; }
+.composer-placeholder { color: var(--deck-faint); }
+.composer-status { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--deck-muted); }
+.caret { display: inline-block; width: 2px; height: 1.1em; margin-left: 1px; vertical-align: text-bottom; background: var(--deck-text); animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.composer-count { color: var(--deck-faint); font-size: var(--text-small); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.composer-count b { color: var(--deck-text); font-weight: var(--font-weight-semibold); }
+.composer-button {
+  display: inline-grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--deck-text);
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.composer-button:hover { background: var(--deck-panel); }
+.composer-button:active { transform: scale(0.92); }
+.composer-button:disabled { color: var(--deck-panel); background: transparent; cursor: not-allowed; }
+.composer-send { background: var(--deck-text); color: var(--deck-bg); }
+.composer-send:hover { background: var(--cgi-purple-200); }
+.composer-send:disabled { background: var(--deck-panel); color: var(--deck-faint); }
+.composer-send.is-pressed { transform: scale(0.88); }
+.on-light .composer { background: var(--color-surface); border-color: var(--color-border); color: var(--color-text); }
+.on-light .composer-placeholder, .on-light .composer-count { color: var(--color-text-secondary); }
+.on-light .composer-count b { color: var(--color-heading-accent); }
+.on-light .composer-status { color: var(--color-text-secondary); }
+.on-light .caret { background: var(--color-text); }
+.on-light .composer-button { color: var(--color-heading-accent); }
+.on-light .composer-button:hover { background: var(--color-accent-surface); }
+.on-light .composer-button:disabled { color: var(--color-text-disabled); background: transparent; }
+.on-light .composer-send { background: var(--button-primary-bg); color: var(--button-primary-text); }
+.on-light .composer-send:hover { background: var(--button-primary-hover-bg); color: var(--button-primary-hover-text); }
+.on-light .composer-send:disabled { background: var(--button-disabled-bg); color: var(--color-text-disabled); }
+.on-light :focus-visible { outline-color: var(--color-focus); }
+
+/* ---------- Streaming states (only with JavaScript) ---------- */
+.js .slide[hidden] { display: none; }
+.js [data-state="pending"] .w,
+.js [data-state="pending"] [data-stream] { opacity: 0; }
+.js [data-state="pending"] .w { filter: blur(0.25em); }
+.js [data-state="pending"] [data-stream] { filter: blur(var(--space-2)); transform: translateY(var(--space-3)); }
+.js [data-state="pending"] .turn { opacity: 0; }
+.js [data-state="pending"] .timeline::before { transform: scaleX(0); }
+.js [data-state="pending"] .qr-card [data-scan] { clip-path: inset(0 0 100% 0); }
+.js .w.is-in { opacity: 1; filter: none; transition: opacity 420ms var(--ease-out), filter 520ms var(--ease-out); }
+.js [data-stream].is-in { opacity: 1; filter: none; transform: none; transition: opacity 480ms var(--ease-out), filter 560ms var(--ease-out), transform 640ms var(--ease-out); }
+.js .slide.is-drawn .timeline::before { transform: none; transition: transform 1100ms var(--ease-in-out); }
+.js .slide.is-drawn .qr-card [data-scan] { clip-path: inset(0); transition: clip-path 900ms var(--ease-in-out); }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 900px) {
+  .welcome, .codex, .aim { grid-template-columns: 1fr; align-items: start; }
+  .qr-card { justify-self: start; width: min(100%, 17rem); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-6); }
+  .timeline::before { display: none; }
+  .options { grid-template-columns: 1fr; }
+  .cursors { display: none; }
+}
+@media (max-width: 560px) {
+  .timeline { grid-template-columns: 1fr; }
+  .composer-count { display: none; }
+  .turn { justify-self: stretch; }
+}
+
+/* ---------- Reduced motion: no streaming, no drifting, state still clear ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .is-thinking .deck-band { animation: none; }
+  .caret { animation: none; }
+  .cursors { display: none; }
+}
+
+/* ---------- Print or save as PDF: one slide per page ---------- */
+@media print {
+  @page { size: landscape; margin: 0; }
+  .js .slide[hidden] { display: grid; }
+  .slide { min-height: 100vh; padding-bottom: var(--deck-pad); break-after: page; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .composer, .js .composer, .cursors { display: none; }
+}
