@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Choose a beginner-friendly project and build an AI-assisted prototype with your team.">
     <title>Start here: Product Design AI Hackathon</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./guide.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
+    <link rel="stylesheet" href="./tokens.css">
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./home.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to the projects</a>
@@ -24,7 +28,7 @@
         <div class="welcome-copy">
           <h1 id="welcome-title">Pick a project.<br>Make one useful thing work.</h1>
           <p class="welcome-lede">You’ll spend about one build day with a team of four or five, using AI to make a small prototype for an everyday problem. You do not need coding experience to take part.</p>
-          <a class="button welcome-button" href="#projects">See the four projects <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary welcome-button" href="#projects">See the four projects <span aria-hidden="true">↓</span></a>
         </div>
         <aside class="welcome-note">
           <strong>Start simple.</strong>
@@ -120,7 +124,7 @@
         <div class="design-layer-choices">
           <article>
             <h3>Route 1: Make your own</h3>
-            <p>Choose this route if you want to learn how a design system works. In Figma, make a page with colour and text styles, spacing steps, and a button, card, and label. In the website, create matching CSS variables and reusable styles in <code>styles.css</code>.</p>
+            <p>Choose this route if you want to learn how a design system works. In Figma, make a page with colour and text styles, spacing steps, and a button, card, and label. In the website, create matching CSS variables in <code>tokens.css</code> and reusable styles in <code>base.css</code>.</p>
             <ol>
               <li>Choose a small set of colours, type sizes, spacing, and corner shapes.</li>
               <li>Build one button, one information card, and one label.</li>
@@ -171,7 +175,7 @@
 
       <section class="try-section" id="demo" aria-labelledby="demo-title">
         <div><h2 id="demo-title">Want to see a tiny example first?</h2><p>The demo page has sample places and a pretend assistant. It helps you explore the starter, but it is not a project brief.</p></div>
-        <a class="button" href="./playground.html">Try the starter <span aria-hidden="true">→</span></a>
+        <a class="button button-outline" href="./playground.html">Try the starter <span aria-hidden="true">→</span></a>
       </section>
       <section class="github-guide" id="get-started" aria-labelledby="github-guide-title">
         <p class="brief-label">Before you build together</p>
@@ -191,7 +195,7 @@
 
         <div class="pages-guide">
           <div><p class="brief-label">Optional: share your prototype</p><h3>Publish it with GitHub Pages</h3><p>GitHub Pages can publish this plain HTML, CSS, and JavaScript project at a public web address. <a href="https://uxsw.github.io/hackathon-starter-kit/">View this starter kit online</a>. To publish your team’s own version, first push the finished files to your team repository. On GitHub, open <strong>Settings → Pages</strong>. Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>, select <code>main</code> and <code>/(root)</code>, then save. When it has finished publishing, GitHub shows the site link in the same Pages settings area. It can take a few minutes to appear.</p><p>Anything published there can be viewed by other people. Use sample data and never publish passwords, API keys, or private information.</p></div>
-          <a class="button" href="https://docs.github.com/en/pages/quickstart">GitHub Pages guide <span aria-hidden="true">→</span></a>
+          <a class="button button-outline" href="https://docs.github.com/en/pages/quickstart">GitHub Pages guide <span aria-hidden="true">→</span></a>
         </div>
         <p class="github-official-links">Official help: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">clone or fork a repository</a> · <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop">push changes</a> · <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">choose a Pages publishing source</a>.</p>
       </section>

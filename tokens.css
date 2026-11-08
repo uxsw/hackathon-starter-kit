@@ -1,0 +1,138 @@
+/*
+ * Design tokens, loosely based on the CGI design system (via the Designer diary
+ * skills matrix prototype). Not an official CGI implementation.
+ * Components use the semantic tokens (--color-*, --button-*, --chip-*), never raw hex.
+ */
+:root {
+  color-scheme: light;
+
+  /* CGI palette (primary) */
+  --cgi-purple-900: #200a58;
+  --cgi-purple-700: #3a2679;
+  --cgi-purple: #5236ab;
+  --cgi-purple-300: #afa3d8;
+  --cgi-purple-200: #cbc3e6;
+  --cgi-purple-100: #e6e3f3;
+  --cgi-purple-50: #f2f1f9;
+  --cgi-red: #e31937;
+  --cgi-gray-900: #151515;
+  --cgi-gray: #333333;
+  --cgi-gray-400: #5c5c5c;
+  --cgi-gray-300: #767676;
+  --cgi-gray-200: #a8a8a8;
+  --cgi-gray-100: #c0c0c0;
+  --cgi-gray-50: #efefef;
+  --cgi-white-700: #ebeef2;
+  --cgi-white-600: #f0f3f6;
+  --cgi-white-400: #f5f7f9;
+  --cgi-white: #ffffff;
+  /* CGI palette (secondary) */
+  --cgi-magenta-300: #a82465;
+  --cgi-warning-900: #654510;
+  --cgi-warning-700: #ab741a;
+  --cgi-warning-100: #fbe3bb;
+  --cgi-error: #b00020;
+  --cgi-error-50: #f7e6e9;
+  --cgi-success-800: #0e6641;
+  --cgi-success-50: #e8f8f1;
+
+  /* Semantic colour */
+  --color-canvas: var(--cgi-white-400);
+  --color-surface: var(--cgi-white);
+  --color-surface-muted: var(--cgi-white-600);
+  --color-text: var(--cgi-gray);
+  --color-text-secondary: var(--cgi-gray-400);
+  --color-text-disabled: var(--cgi-gray-200);
+  --color-icon-muted: var(--cgi-gray-300);
+  --color-heading-accent: var(--cgi-purple-900);
+  --color-link: var(--cgi-purple);
+  --color-border: var(--cgi-gray-300);        /* input boundaries */
+  --color-border-strong: var(--cgi-gray-900); /* input hover */
+  --color-divider: var(--cgi-white-700);      /* decorative only */
+  --color-divider-strong: var(--cgi-gray-100);
+  --color-focus: var(--cgi-purple);
+  --color-control-accent: var(--cgi-purple);
+  --color-accent-surface: var(--cgi-purple-50);
+  --color-marker: var(--cgi-purple-300);
+  --color-error: var(--cgi-error);
+  --color-error-surface: var(--cgi-error-50);
+  --color-success: var(--cgi-success-800);
+  --color-success-surface: var(--cgi-success-50);
+  /* Caution notes (privacy, keys, "pause before clicking"). Uses the CGI warning
+     tints for one meaning only; the words carry the meaning. Assumed */
+  --color-warning-surface: var(--cgi-warning-100);
+  --color-warning-text: var(--cgi-warning-900);
+
+  /* Buttons */
+  --button-primary-bg: var(--cgi-purple);
+  --button-primary-text: var(--cgi-white);
+  --button-primary-hover-bg: var(--cgi-purple-200);
+  --button-primary-hover-text: var(--cgi-purple-900);
+  --button-primary-pressed-bg: var(--cgi-purple-700);
+  --button-secondary-bg: var(--cgi-gray-50);
+  --button-secondary-text: var(--cgi-purple-900);
+  --button-secondary-hover-text: var(--cgi-purple);
+  --button-secondary-pressed-bg: var(--cgi-gray-200);
+  --button-outline-border: var(--cgi-purple);
+  --button-outline-text: var(--cgi-purple);
+  --button-outline-hover-bg: var(--cgi-purple-50);
+  --button-outline-pressed-bg: var(--cgi-purple-200);
+  --button-disabled-bg: var(--cgi-gray-50);
+  --button-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+
+  /* Chips */
+  --chip-border: var(--cgi-purple);
+  --chip-text: var(--cgi-purple);
+  --chip-hover-bg: var(--cgi-purple);
+  --chip-hover-text: var(--cgi-white);
+  --chip-active-bg: var(--cgi-purple-100);
+
+  /* Optional second hue, for one data meaning only (teal, not a CGI colour) */
+  --heat-1: #d5ece8;
+  --heat-2: #8fc7bd;
+  --heat-3: #2a7c71;  /* white text OK */
+  --heat-4: #0f4c45;  /* white text OK */
+  --heat-ink: #0b3530;
+
+  /* Brand gradient A: use sparingly (the header band) */
+  --gradient-brand: linear-gradient(90deg, var(--cgi-red) 0%, var(--cgi-magenta-300) 60%, var(--cgi-purple) 100%);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography: Source Sans 3 (Google Fonts), the current Source Sans Pro */
+  --font-family: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Prompts and file names. The system has no code face. Assumed */
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --text-h1: clamp(1.875rem, 1.5rem + 1.5vw, 2.375rem); /* 30 → 38px, semibold */
+  --text-h2: 1.75rem;    /* 28px, regular */
+  --text-h3: 1.25rem;    /* 20px, semibold */
+  --text-zone: 1.375rem; /* 22px, semibold: zone headings */
+  --text-body: 1rem;     /* 16px */
+  --text-small: 0.875rem; /* 14px: labels, hints, chips */
+  --line-height-heading: 1.25;
+  --line-height-body: 1.5;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Shape */
+  --radius-sm: 4px;     /* inputs, cards */
+  --radius-lg: 8px;     /* dialogs, large framed surfaces */
+  --radius-pill: 999px; /* buttons, chips */
+  --border-width: 1px;
+  --focus-width: 3px;
+  --focus-offset: 2px;
+
+  /* Layout */
+  --width-content: 720px;
+  --width-overview: 1120px;
+  --width-full: 1776px;
+  --gutter-full: clamp(var(--space-4), 3vw, 48px);
+  --target-size: 44px;
+}

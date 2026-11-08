@@ -14,8 +14,8 @@ function renderPlaces() {
   });
   placeCount.textContent = `${visible.length} ${visible.length === 1 ? "place" : "places"} shown`;
   placeList.innerHTML = visible.length
-    ? visible.map((place) => `<li class="place-item"><h3>${place.place}</h3><p>${place.note}</p><p><strong>Access:</strong> ${place.access}</p><span class="place-tag">${place.type}</span><span class="place-tag">${place.cost}</span></li>`).join("")
-    : "<li>No places match those filters. Choose another option above.</li>";
+    ? visible.map((place) => `<li class="place-item"><h3>${place.place}</h3><p>${place.note}</p><p><strong>Access:</strong> ${place.access}</p><span class="place-tags"><span class="chip">${place.type}</span><span class="chip">${place.cost}</span></span></li>`).join("")
+    : "<li class=\"place-empty\">No places match those filters. Choose another option above.</li>";
 }
 
 settingFilter.addEventListener("change", renderPlaces);
