@@ -224,6 +224,11 @@ body {
 .meter-value { min-width: 6ch; text-align: right; color: var(--color-text); font-weight: var(--font-weight-semibold); }
 .demo-note { margin-top: var(--space-3) !important; color: var(--color-text-secondary); }
 
+/* ---------- Team card (playback slide), inside the white demo panel ---------- */
+.card { display: grid; gap: var(--space-3); margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+.card li { margin: 0; color: var(--color-text-secondary); }
+.card strong { display: block; color: var(--color-heading-accent); font-weight: var(--font-weight-semibold); }
+
 /* ---------- 5. Options ---------- */
 .options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
 .options li {
