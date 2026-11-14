@@ -1,15 +1,48 @@
-# API options for the routes
+# Data and API options
 
-Use the prepared fixture first so the team can design and build without waiting on a service. Treat live API work as a learning choice, not a requirement. Verify current terms and endpoints shortly before the event; public APIs can change.
+Every team aims to connect its prototype to real data (tier 2 in the slides). That can be a public API that updates, or a dataset the team designs. Start with sample data so you can get a live link up, then connect it. The `connect-data` skill in `.agents/skills/` walks through this.
 
-| Source | Good for | Setup considerations | Starter recommendation |
+## Public APIs tested from a GitHub Pages site
+
+Tested on 14 November 2026 with a `fetch()` from `https://uxsw.github.io`, the same kind of place a team's prototype runs. "Works" means the browser could read the response without a key. Re-check shortly before the event.
+
+| API | Example request | Fits | Status |
 | --- | --- | --- | --- |
-| [Open-Meteo](https://open-meteo.com/en/docs) | City route: geocoding and weather forecast data | Free access is for non-commercial use and subject to published request limits and attribution terms. Check current terms. | Best live API candidate; keep calls low and make location choice explicit. |
-| [World Bank Indicators API](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392) | Public numbers route: population and many other country-level indicators | JSON output is available and API keys are not required. Check the indicator's units, source note, and data coverage. | A good optional live-data stretch; use one indicator and a small set of countries. |
-| [TfL Unified API](https://api.tfl.gov.uk/) | London transport and places | Account registration and an app key are recommended; the portal describes a 500-request plan. Browser use exposes any key. | Optional advanced route; use a fake key in the workshop exercise or facilitator proxy for a real demo. |
-| Prepared CSV/JSON | Any route, especially data explainer and design-system explorer | No network, account, or secret required. | Always available; include source, date, units, and limitations with the data. |
+| ESCO skills and occupations | `https://ec.europa.eu/esco/api/search?text=user%20research&type=skill&language=en&limit=5` | CGI growth story | Works |
+| GitHub REST API | `https://api.github.com/users/USERNAME/repos` | CGI growth story | Works; 60 requests an hour without signing in |
+| Open Library | `https://openlibrary.org/search.json?q=service%20design&limit=5` | CGI growth story | Works |
+| Open-Meteo (forecast, air quality, geocoding) | `https://api.open-meteo.com/v1/forecast?latitude=50.72&longitude=-3.53&current=temperature_2m` | Day out | Works; non-commercial terms |
+| Postcodes.io | `https://api.postcodes.io/postcodes/EX44QJ` | Day out | Works |
+| Food Standards Agency ratings | `https://api.ratings.food.gov.uk/Establishments?name=cafe&address=exeter&pageSize=5` | Day out | Works; send header `x-api-version: 2` |
+| Environment Agency flood monitoring | `https://environment.data.gov.uk/flood-monitoring/id/floods` | Day out, public data | Works |
+| TfL Unified API | `https://api.tfl.gov.uk/Line/Mode/tube/Status` | Day out | Works without a key at low volume |
+| Sunrise Sunset | `https://api.sunrise-sunset.org/json?lat=50.72&lng=-3.53&formatted=0` | Day out | Works |
+| Nominatim (OpenStreetMap) | `https://nominatim.openstreetmap.org/search?q=Exeter&format=json&limit=1` | Day out | Works; at most one request a second |
+| World Bank Indicators | `https://api.worldbank.org/v2/country/GB;FR/indicator/SP.POP.TOTL?format=json&date=2015:2023` | Public data | Works |
+| ONS | `https://api.beta.ons.gov.uk/v1/datasets` | Public data | Works; harder to navigate |
+| Carbon Intensity (GB) | `https://api.carbonintensity.org.uk/intensity` | Public data | Works |
+| Police UK | `https://data.police.uk/api/crimes-street/all-crime?lat=50.72&lng=-3.53` | Public data | Works; large responses |
+| GOV.UK bank holidays | `https://www.gov.uk/bank-holidays.json` | Any | Works |
+| UK Parliament Members | `https://members-api.parliament.uk/api/Members/Search?Name=smith&take=5` | Public data | Works |
+| Wikipedia summaries | `https://en.wikipedia.org/api/rest_v1/page/summary/Exeter` | Any | Works |
+| GBIF, iNaturalist | `https://api.gbif.org/v1/occurrence/search?country=GB&limit=5` | Day out, public data | Works |
+| data.gov.uk catalogue (CKAN) | `https://data.gov.uk/api/action/package_search?q=skills` | None | Blocked by CORS |
+| REST Countries | `https://restcountries.com/v3.1/alpha/gb` | None | Blocked by CORS |
+| Art Institute of Chicago | `https://api.artic.edu/api/v1/artworks` | None | Blocked by CORS |
+| Overpass (OpenStreetMap) | `https://overpass-api.de/api/interpreter` | None | Unreliable: busy and timing out |
 
-## Safe API pattern for a one-day prototype
+"Blocked by CORS" means the service does not allow browser requests from other websites. It works from a server, but not from GitHub Pages.
+
+## Team-made datasets
+
+| Option | Good for | Watch out for |
+| --- | --- | --- |
+| JSON file in `data/` | Quickest; changes go through pull requests | Only people with repository access can edit |
+| Google Sheet published as CSV | Whole team edits in a spreadsheet; page reads the latest version | Public to anyone with the link; not yet tested from Pages, so check early |
+| Browser storage (`localStorage`) | Saving new entries on one computer | Stays in that browser only; say so on screen |
+| Supabase or another hosted database | Learning how a real database works | Account, setup and access rules take time |
+
+## Safe API pattern
 
 1. Choose a user question that needs the data.
 2. Find one endpoint and inspect one example response.

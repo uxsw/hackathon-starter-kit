@@ -1,0 +1,178 @@
+/*
+ * Toolbox page (toolbox.html). Loads after tokens.css and base.css.
+ * Uses tokens only: no raw colours, sizes or radii.
+ */
+
+.toolbox-page {
+  max-width: calc(var(--width-overview) + 2 * var(--space-5));
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+.toolbox-page > section + section { margin-top: var(--space-6); }
+.toolbox-page h2 { color: var(--color-heading-accent); }
+.small { font-size: var(--text-small); color: var(--color-text-secondary); }
+
+/* ---------- Intro ---------- */
+.toolbox-intro h1 { max-width: 24ch; margin-top: var(--space-3); }
+.lede { max-width: 65ch; font-size: var(--text-h3); color: var(--color-text-secondary); }
+.lede strong { color: var(--color-text); }
+.checkpoint-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.checkpoint-strip li + li { margin-top: 0; }
+.checkpoint-strip a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target-size);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+.checkpoint-strip a:hover { color: var(--color-link); background: var(--color-accent-surface); }
+.checkpoint-strip span {
+  display: grid;
+  flex: 0 0 auto;
+  width: var(--space-5);
+  height: var(--space-5);
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-link);
+  color: var(--button-primary-text);
+  font-size: var(--text-small);
+}
+
+/* ---------- Skills explainer and criteria ---------- */
+.how-skills {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5) var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+.how-skills p { color: var(--color-text-secondary); }
+.how-skills h3 { font-size: var(--text-body); color: var(--color-heading-accent); }
+.how-skills-steps ul { margin-bottom: var(--space-3); }
+.choosing { padding-top: var(--space-5); border-top: var(--border-width) solid var(--color-divider-strong); }
+.criteria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.criteria li { margin: 0; padding-top: var(--space-3); border-top: 2px solid var(--color-divider-strong); color: var(--color-text-secondary); }
+.criteria strong { display: block; color: var(--color-heading-accent); }
+
+/* ---------- Checkpoints ---------- */
+.checkpoint {
+  scroll-margin-top: var(--space-4);
+  padding: var(--space-6) var(--space-5);
+  border: var(--border-width) solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.checkpoint-head { max-width: 72ch; margin-bottom: var(--space-5); }
+.checkpoint-head p:last-child { margin-bottom: 0; color: var(--color-text-secondary); }
+.checkpoint-head strong { color: var(--color-text); }
+.checkpoint-number {
+  margin-bottom: var(--space-2);
+  color: var(--color-link);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+}
+.pick {
+  margin-bottom: var(--space-5);
+  padding: var(--space-5);
+  border-left: 4px solid var(--color-link);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-surface);
+}
+.pick h3 { color: var(--color-heading-accent); }
+.pick p { max-width: 72ch; color: var(--color-text-secondary); }
+.pick-label {
+  margin-bottom: var(--space-1);
+  color: var(--color-link);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tag {
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border: var(--border-width) solid var(--chip-border);
+  border-radius: var(--radius-pill);
+  color: var(--chip-text);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-regular);
+  vertical-align: middle;
+}
+.prompt-box {
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+.prompt-box code { color: var(--color-text); font-size: var(--text-small); }
+.options h3, .api-status h3 { margin-top: var(--space-5); font-size: var(--text-body); color: var(--color-heading-accent); }
+.options h3:first-child { margin-top: 0; }
+
+/* ---------- Tables ---------- */
+.options table, .api-status table { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
+.options th, .options td, .api-status th, .api-status td {
+  padding: var(--space-3);
+  border-top: var(--border-width) solid var(--color-divider-strong);
+  text-align: left;
+  vertical-align: top;
+}
+.options thead th, .api-status thead th { border-top: 0; color: var(--color-text-secondary); font-weight: var(--font-weight-semibold); }
+.options tbody th, .api-status tbody th { width: 24%; font-weight: var(--font-weight-semibold); }
+.options td, .api-status td { color: var(--color-text-secondary); }
+.tool-list li { max-width: 80ch; color: var(--color-text-secondary); }
+.tool-list strong { color: var(--color-text); }
+
+.api-status { margin-top: var(--space-6); padding-top: var(--space-5); border-top: var(--border-width) solid var(--color-divider-strong); }
+.api-status > p { max-width: 72ch; color: var(--color-text-secondary); }
+.ok, .blocked, .flaky {
+  display: inline-block;
+  margin-right: var(--space-1);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-pill);
+  font-weight: var(--font-weight-semibold);
+}
+.ok { background: var(--color-success-surface); color: var(--color-success); }
+.blocked { background: var(--color-error-surface); color: var(--color-error); }
+.flaky { background: var(--color-warning-surface); color: var(--color-warning-text); }
+
+.make-your-own { padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-muted); }
+.make-your-own p { max-width: 72ch; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 860px) {
+  .how-skills { grid-template-columns: 1fr; }
+  .checkpoint-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .toolbox-page { padding-inline: var(--space-4); }
+  .checkpoint, .pick, .how-skills { padding: var(--space-4); }
+  /* Stack table rows as cards */
+  .options table, .api-status table, .options tbody, .api-status tbody, .options tr, .api-status tr,
+  .options th, .options td, .api-status th, .api-status td { display: block; width: auto; }
+  .options thead, .api-status thead { display: none; }
+  .options tr, .api-status tr { padding: var(--space-3) 0; border-top: var(--border-width) solid var(--color-divider-strong); }
+  .options th, .options td, .api-status th, .api-status td { padding: var(--space-1) 0; border: 0; }
+  .options tbody th, .api-status tbody th { width: auto; }
+}
