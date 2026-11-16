@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Skills, tools and live data sources for each checkpoint of the Product Design AI Hackathon.">
+    <title>Toolbox — Product Design AI Hackathon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
+    <link rel="stylesheet" href="./tokens.css">
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./toolbox.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the toolbox</a>
+    <header class="site-header">
+      <a class="wordmark" href="./">PD <span>× AI</span></a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="./#projects">Choose a project</a>
+        <a href="./toolbox.html" aria-current="page">Toolbox</a>
+        <a href="./#how-to-start">How to start</a>
+        <a class="nav-try" href="./playground.html">Try the starter</a>
+      </nav>
+    </header>
+
+    <main id="main" class="toolbox-page">
+      <section class="toolbox-intro" aria-labelledby="toolbox-title">
+        <p class="chip">Toolbox</p>
+        <h1 id="toolbox-title">Pick your tools.<br>Know why you picked them.</h1>
+        <p class="lede">Over the two days your team passes four checkpoints. For each one there is <strong>a default</strong>, already set up in the starter, and <strong>other options</strong> worth knowing about. Use the default if you want to get going. Try another if someone on your team is curious. Either way, write one line in your <code>PLAN.md</code> saying what you chose and why.</p>
+        <ol class="checkpoint-strip" aria-label="The four checkpoints">
+          <li><a href="#plan"><span>1</span>Plan</a></li>
+          <li><a href="#live"><span>2</span>Live link</a></li>
+          <li><a href="#connect"><span>3</span>Connected</a></li>
+          <li><a href="#test"><span>4</span>Tested</a></li>
+        </ol>
+      </section>
+
+      <section class="how-skills" aria-labelledby="skills-title">
+        <div>
+          <h2 id="skills-title">What is a skill?</h2>
+          <p>A skill is a set of instructions that teaches Codex how to do one kind of job well, like planning or testing. It is a folder with a <code>SKILL.md</code> file in it. Five skills come with this starter, in <code>.agents/skills/</code>. Codex finds them when you open the project folder, in the app or in VS Code. You don't need to install anything.</p>
+        </div>
+        <div class="how-skills-steps">
+          <h3>Using one</h3>
+          <ul>
+            <li>Ask for it by name: <em>“Use the plan-the-build skill.”</em></li>
+            <li>Or type <code>$</code> in the Codex prompt and choose it from the list.</li>
+            <li>Codex may also choose one itself when your request matches.</li>
+            <li>Open the <code>SKILL.md</code> file to read what it will do. It is plain English. Your team can edit it.</li>
+          </ul>
+          <p class="small">The file <code>AGENTS.md</code> holds the house rules Codex reads before every task: plain HTML, no keys, stay in your own files. Add your own team notes at the bottom.</p>
+        </div>
+      </section>
+
+      <section class="choosing" aria-labelledby="choosing-title">
+        <h2 id="choosing-title">How to judge any tool in five minutes</h2>
+        <ul class="criteria">
+          <li><strong>Time to first result.</strong> Can you see something useful within 15 minutes?</li>
+          <li><strong>Fits plain HTML.</strong> Does it need a build step, a framework or an install?</li>
+          <li><strong>Accounts and keys.</strong> Does it need a sign-up or a key? A key cannot go in a public site.</li>
+          <li><strong>Team cost.</strong> Will one person need to set it up for everyone, or does it just work?</li>
+          <li><strong>What it teaches.</strong> Will it show you something new about building with AI?</li>
+        </ul>
+      </section>
+
+      <!-- 1 PLAN -->
+      <section class="checkpoint" id="plan" aria-labelledby="plan-title">
+        <header class="checkpoint-head">
+          <p class="checkpoint-number">Checkpoint 1 · Day 1 morning · 75 to 90 minutes</p>
+          <h2 id="plan-title">Plan</h2>
+          <p><strong>Show:</strong> a one-page <code>PLAN.md</code>, signed off by your team lead. It says who it is for, the one interaction that must work, your data, and who does what.</p>
+        </header>
+        <article class="pick">
+          <p class="pick-label">Default</p>
+          <h3>plan-the-build skill <span class="tag">In the starter</span></h3>
+          <p>Codex asks your team questions one at a time: who the prototype is for, what it must do, which data it uses, and how you will split the work. It suggests two or three ways to build it, then writes <code>PLAN.md</code>. It does not write code.</p>
+          <div class="prompt-box"><code>Use the plan-the-build skill. We are a team of four and we have chosen the CGI growth story project.</code></div>
+        </article>
+        <div class="options">
+          <h3>Other options</h3>
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">Good for</th><th scope="col">Watch out for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://github.com/obra/superpowers">Superpowers</a>: brainstorming skill</th><td>A thorough design conversation. Ours is a cut-down version of this one. Install it as a Codex plugin (search for “superpowers” in plugins).</td><td>Only use <code>brainstorming</code>. The full plugin then moves into engineering habits such as test-first coding, worktrees and sub-agents, which will slow a one-day build down.</td></tr>
+              <tr><th scope="row">Just ask Codex</th><td>Zero setup. Try: <em>“Interview us one question at a time about who this is for and what it must do. Then write a one-page plan. Don’t write code.”</em></td><td>Without a template, plans drift long. Keep to one page.</td></tr>
+              <tr><th scope="row"><a href="https://github.com/github/spec-kit">GitHub Spec Kit</a></th><td>Seeing spec-driven development: you write a spec, then a plan, then tasks, and the AI builds from those.</td><td>Needs a command-line install and produces several documents. Read about it and don’t use it this time.</td></tr>
+              <tr><th scope="row"><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD Method</a></th><td>Knowing what a full AI-agile process looks like: analyst, product manager and architect agents, PRDs and stories.</td><td>Built for multi-week products. Far too heavy for two days, so we left it out.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 LIVE -->
+      <section class="checkpoint" id="live" aria-labelledby="live-title">
+        <header class="checkpoint-head">
+          <p class="checkpoint-number">Checkpoint 2 · Day 1 afternoon</p>
+          <h2 id="live-title">Live link with sample data</h2>
+          <p><strong>Show:</strong> a GitHub Pages link that anyone can open, even if it only shows sample data. Get it live early; it’s much easier to update a site that already works.</p>
+        </header>
+        <article class="pick">
+          <p class="pick-label">Default</p>
+          <h3>ship-it skill + GitHub Pages <span class="tag">In the starter</span></h3>
+          <p>Codex checks your paths and looks for anything secret, then takes you through the GitHub Pages settings and checks the live page. Publishing from <code>main</code> means every merged pull request updates the site.</p>
+          <div class="prompt-box"><code>Use the ship-it skill. We want our first live link with the sample data.</code></div>
+        </article>
+        <div class="options">
+          <h3>Other options</h3>
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">Good for</th><th scope="col">Watch out for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://app.netlify.com/drop">Netlify Drop</a></th><td>Dragging a folder onto a web page to get a link in seconds. A good backup if Pages setup stalls.</td><td>Not connected to your GitHub repository, so you upload again after every change.</td></tr>
+              <tr><th scope="row">Playwright skill or <a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a></th><td>Letting Codex open your page itself, click around and take screenshots, so it can check its own work.</td><td>Needs an install. Ask a facilitator. It is worth it if your team is confident.</td></tr>
+              <tr><th scope="row"><a href="https://github.com/anthropics/skills/tree/main/skills/frontend-design">frontend-design skill</a></th><td>Pushing the visual design beyond the starter’s look. It is a <code>SKILL.md</code> file, so it can be copied into <code>.agents/skills/</code>.</td><td>Polish is not the goal this time. Use it on Day 2 if the data already works.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3 CONNECT -->
+      <section class="checkpoint" id="connect" aria-labelledby="connect-title">
+        <header class="checkpoint-head">
+          <p class="checkpoint-number">Checkpoint 3 · End of Day 1 or Day 2 morning</p>
+          <h2 id="connect-title">Connected to real data</h2>
+          <p><strong>Show:</strong> your page reading real data. It can come from a public API that updates, or a dataset your team designs. Someone can change something on screen and see different results come back. The page shows where the data came from and handles loading, empty and error states.</p>
+        </header>
+        <article class="pick">
+          <p class="pick-label">Default</p>
+          <h3>connect-data skill <span class="tag">In the starter</span></h3>
+          <p>Codex shows you one real response, agrees with you which fields the screen needs, and keeps the data code in its own file so teammates can work on the page at the same time. You design the loading, empty and error states together. Sample data stays as a fallback.</p>
+          <div class="prompt-box"><code>Use the connect-data skill. We want to use the ESCO skills API to suggest skill names as someone types.</code></div>
+        </article>
+        <div class="options">
+          <h3>Where the data can live</h3>
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">Good for</th><th scope="col">Watch out for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">A public API that works without a key (list below)</th><td>Live data that changes, with no account and no setup.</td><td>Test it from the browser first. Some APIs block requests from other websites.</td></tr>
+              <tr><th scope="row">A JSON file in your repository</th><td>A dataset your team designs, such as skills, evidence or places. It is the quickest and changes go through pull requests.</td><td>Only people who can edit the repository can change it.</td></tr>
+              <tr><th scope="row">A Google Sheet published as CSV</th><td>A shared dataset the whole team edits in a spreadsheet. The page reads the latest version.</td><td>Anyone with the link can read it, so use made-up data. We have not tested this from the live site. Check it early.</td></tr>
+              <tr><th scope="row">Browser storage (<code>localStorage</code>)</th><td>Saving new entries on one computer, such as someone adding their own skills.</td><td>Stays on that browser only. Say so on screen.</td></tr>
+              <tr><th scope="row"><a href="https://supabase.com/">Supabase</a></th><td>A real online database, if your team wants to learn how one works.</td><td>Account, setup and access rules take time. Only try it if you are ahead.</td></tr>
+            </tbody>
+          </table>
+          <h3>Tools for looking at data</h3>
+          <ul class="tool-list">
+            <li><a href="https://hoppscotch.io/">Hoppscotch</a>: try an API request in your browser and see the response before you build anything. Nothing to install.</li>
+            <li>Your browser’s developer tools: the <strong>Network</strong> tab shows every request your page makes. The <strong>Console</strong> shows errors, such as a blocked request.</li>
+            <li><a href="https://github.com/upstash/context7">Context7</a>: an MCP connection that gives Codex up-to-date documentation for libraries and APIs. It is optional and needs setup.</li>
+            <li><a href="https://github.com/public-apis/public-apis">public-apis</a>: a huge list of free APIs. Many are out of date or block browsers, so test before you commit.</li>
+          </ul>
+        </div>
+
+        <div class="api-status" id="apis">
+          <h3>Public APIs we tested</h3>
+          <p>We tested each one on 14 November 2026 with a request from a GitHub Pages site, the same place your prototype will run. “Works” means the browser was allowed to read the response with no key. Check again on the day; services change.</p>
+          <table>
+            <thead><tr><th scope="col">API</th><th scope="col">What it gives you</th><th scope="col">Fits</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://esco.ec.europa.eu/en/use-esco/use-esco-services-api">ESCO</a></th><td>EU catalogue of skills and occupations, with descriptions. You can search for “user research” or “UX designer”.</td><td>CGI growth story</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://docs.github.com/en/rest">GitHub REST API</a></th><td>Public repositories, commits and pull requests, which could be evidence of your own work.</td><td>CGI growth story</td><td><span class="ok">Works</span> 60 requests an hour without signing in</td></tr>
+              <tr><th scope="row"><a href="https://openlibrary.org/developers/api">Open Library</a></th><td>Books by subject or search, which could feed learning suggestions.</td><td>CGI growth story</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://open-meteo.com/en/docs">Open-Meteo</a></th><td>Weather forecast, air quality and place-name search.</td><td>Day out</td><td><span class="ok">Works</span> Non-commercial use</td></tr>
+              <tr><th scope="row"><a href="https://postcodes.io/">Postcodes.io</a></th><td>UK postcode to location, ward and council.</td><td>Day out</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://api.ratings.food.gov.uk/help">Food Standards Agency</a></th><td>Food hygiene ratings for cafés and restaurants.</td><td>Day out</td><td><span class="ok">Works</span> Send header <code>x-api-version: 2</code></td></tr>
+              <tr><th scope="row"><a href="https://environment.data.gov.uk/flood-monitoring/doc/reference">Environment Agency</a></th><td>Live flood warnings and river levels in England.</td><td>Day out, public data</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://api.tfl.gov.uk/">TfL Unified API</a></th><td>London transport line status, stops and arrivals.</td><td>Day out</td><td><span class="ok">Works</span> without a key at low volume</td></tr>
+              <tr><th scope="row"><a href="https://sunrise-sunset.org/api">Sunrise Sunset</a></th><td>Sunrise and sunset times for a location.</td><td>Day out</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://nominatim.org/release-docs/latest/api/Search/">Nominatim</a> (OpenStreetMap)</th><td>Find places by name and get their coordinates.</td><td>Day out</td><td><span class="ok">Works</span> At most one request a second</td></tr>
+              <tr><th scope="row"><a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392">World Bank</a></th><td>Population and hundreds of other indicators by country and year.</td><td>Public data</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://developer.ons.gov.uk/">ONS</a></th><td>Official UK statistics datasets.</td><td>Public data</td><td><span class="ok">Works</span> Harder to navigate</td></tr>
+              <tr><th scope="row"><a href="https://carbon-intensity.github.io/api-definitions/">Carbon Intensity</a></th><td>How clean Great Britain’s electricity is now, with forecasts.</td><td>Public data</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://data.police.uk/docs/">Police UK</a></th><td>Street-level crime categories by area and month.</td><td>Public data</td><td><span class="ok">Works</span> Large responses</td></tr>
+              <tr><th scope="row"><a href="https://www.gov.uk/bank-holidays.json">GOV.UK bank holidays</a></th><td>UK bank holiday dates.</td><td>Any</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://members-api.parliament.uk/index.html">UK Parliament Members</a></th><td>MPs and Lords, constituencies and parties.</td><td>Public data</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://en.wikipedia.org/api/rest_v1/">Wikipedia</a></th><td>Short summaries and images for a topic or place.</td><td>Any</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row"><a href="https://www.gbif.org/developer/summary">GBIF</a>, <a href="https://api.inaturalist.org/v1/docs/">iNaturalist</a></th><td>Wildlife sightings by place.</td><td>Day out, public data</td><td><span class="ok">Works</span></td></tr>
+              <tr><th scope="row">data.gov.uk catalogue</th><td>Search for UK government datasets.</td><td>Avoid for now</td><td><span class="blocked">Blocked</span> Browser requests refused</td></tr>
+              <tr><th scope="row">REST Countries</th><td>Country facts.</td><td>Avoid for now</td><td><span class="blocked">Blocked</span> Browser requests refused</td></tr>
+              <tr><th scope="row">Art Institute of Chicago</th><td>Artworks and images.</td><td>Avoid for now</td><td><span class="blocked">Blocked</span> Browser requests refused</td></tr>
+              <tr><th scope="row">Overpass (OpenStreetMap)</th><td>Detailed map features, such as every library in a city.</td><td>Avoid for now</td><td><span class="flaky">Unreliable</span> Busy and timing out</td></tr>
+            </tbody>
+          </table>
+          <p class="small">“Blocked” means the service doesn’t allow requests from other websites (this is called CORS). It will work from a server, but not from a GitHub Pages site. If your team wants a challenge, ask Codex to explain why.</p>
+        </div>
+      </section>
+
+      <!-- 4 TEST -->
+      <section class="checkpoint" id="test" aria-labelledby="test-title">
+        <header class="checkpoint-head">
+          <p class="checkpoint-number">Checkpoint 4 · Day 2 fresh-eyes swap</p>
+          <h2 id="test-title">Tested by people</h2>
+          <p><strong>Show:</strong> what confused people, sorted into must fix, nice to have and ignore. Only must-fix items go into the afternoon, before the 14:00 feature freeze.</p>
+        </header>
+        <article class="pick">
+          <p class="pick-label">Default</p>
+          <h3>fresh-eyes-test skill <span class="tag">In the starter</span></h3>
+          <p>Codex writes a short test script from your plan: three to five tasks written as real situations, not instructions, and checks your wording isn’t leading. While people test, it can check keyboard access and contrast. Afterwards it sorts your notes into the three lists.</p>
+          <div class="prompt-box"><code>Use the fresh-eyes-test skill to write a script for the swap. Two people from another team will try our prototype for 25 minutes.</code></div>
+        </article>
+        <div class="options">
+          <h3>Other options and reading</h3>
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">Good for</th><th scope="col">Watch out for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Nielsen’s 10 usability heuristics</a></th><td>A quick expert review before anyone else sees the prototype. Ask Codex to check your page against each one.</td><td>An AI’s review is no substitute for watching a real person.</td></tr>
+              <tr><th scope="row"><a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/">Testing with five users</a></th><td>Why a few people find most problems.</td><td>Two testers in a swap is a smoke test, not research.</td></tr>
+              <tr><th scope="row"><a href="https://www.gov.uk/service-manual/user-research">GOV.UK Service Manual: user research</a></th><td>Plain guidance on planning and running sessions, familiar from public-sector work.</td><td>Written for whole services; take the session basics.</td></tr>
+              <tr><th scope="row"><a href="https://www.deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a></th><td>Automatic accessibility checks in the browser, with no code changes.</td><td>They only catch some problems. Still test with the keyboard.</td></tr>
+              <tr><th scope="row"><a href="https://webaim.org/resources/contrastchecker/">WebAIM contrast checker</a></th><td>Checking a colour pair quickly.</td><td>None. It is quick and free.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="checkpoint team" id="team" aria-labelledby="team-title">
+        <header class="checkpoint-head">
+          <p class="checkpoint-number">All the way through</p>
+          <h2 id="team-title">Four people, four AI assistants, one project</h2>
+          <p>The hardest part of building with AI as a team isn’t the AI. It is four people changing the same files at once. These habits keep things working.</p>
+        </header>
+        <article class="pick">
+          <p class="pick-label">Default</p>
+          <h3>team-handoff skill <span class="tag">In the starter</span></h3>
+          <p>Before you open a pull request, Codex checks your changes stay in your own slice. It brings in the latest <code>main</code> and writes a pull request description in plain language. It can also explain a teammate’s pull request to you, and take you through a merge conflict without silently picking a side.</p>
+          <div class="prompt-box"><code>Use the team-handoff skill. I’ve finished the skill search box and want to open a pull request.</code></div>
+        </article>
+        <div class="options">
+          <h3>Habits that prevent conflicts</h3>
+          <ul class="tool-list">
+            <li><strong>Own a slice, own its files.</strong> Your <code>PLAN.md</code> says who owns which files. Ask before editing someone else’s.</li>
+            <li><strong>Pull at the start of every block.</strong> Use <strong>Fetch origin</strong>, then <strong>Pull origin</strong>, before you ask Codex for anything.</li>
+            <li><strong>Small pull requests, often.</strong> Aim for one each every hour or two. A 20-line change merges easily; a 400-line one doesn’t.</li>
+            <li><strong>One integrator.</strong> One person merges pull requests and keeps <code>main</code> working. Everyone else asks them.</li>
+            <li><strong>Don’t let the AI tidy up.</strong> Reformatting files you didn’t mean to change is the commonest cause of conflicts. <code>AGENTS.md</code> already tells Codex not to.</li>
+          </ul>
+          <h3>Other options</h3>
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">Good for</th><th scope="col">Watch out for</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects">GitHub Projects</a></th><td>A shared board of who is doing what, linked to pull requests.</td><td>Another thing to keep up to date. <code>PLAN.md</code> may be enough.</td></tr>
+              <tr><th scope="row">Codex reviewing pull requests on GitHub</th><td>A second opinion on a pull request before you merge it, if your Codex account is connected to GitHub.</td><td>A person on the team still approves. AI review is advice.</td></tr>
+              <tr><th scope="row"><a href="https://github.com/obra/superpowers">Superpowers</a>: systematic-debugging skill</th><td>When something is broken and you are going round in circles. It makes the AI find the cause before it tries fixes.</td><td>Same as above: use the one skill, not the whole workflow.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="make-your-own" aria-labelledby="own-title">
+        <h2 id="own-title">Make your own skill</h2>
+        <p>If your team keeps typing the same instructions, turn them into a skill. Make a folder in <code>.agents/skills/</code> with a <code>SKILL.md</code> file: a short name, a one-line description of when to use it, then the steps in plain English. Copy one of ours as a template. Codex also comes with a <code>skill-creator</code> skill that can draft one for you. It’s a good thing to show at playback.</p>
+        <p class="small">More to explore: <a href="https://developers.openai.com/codex/skills">Codex skills documentation</a> · <a href="https://agentskills.io/">Agent Skills open standard</a> · <a href="https://github.com/anthropics/skills">Anthropic’s example skills</a> (the same format works in Codex)</p>
+      </section>
+    </main>
+    <footer class="site-footer"><span>Start small. Learn together. Share what changed.</span><a href="./">Back to the start page</a></footer>
+  </body>
+</html>
